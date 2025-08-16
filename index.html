@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>مجابيس</title>
+    <!-- Google Fonts: Elegant Arabic & English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marhey:wght@700&family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+<style>
+    /* ----- 1. The Foundation: Colors, Fonts, and Base Styles ----- */
+    :root {
+        --bg-cream: #FBF6EF;
+        --bg-soft-beige: #F5EFE1;
+        --text-brown: #4A3731;
+        --accent-gold: #D4AF37;
+        --accent-red: #B95C50;
+        --shadow-color: rgba(74, 55, 49, 0.15);
+        --font-headings: 'Marhey', 'Cairo', sans-serif;
+        --font-body: 'Cairo', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: var(--font-body);
+        background-color: var(--bg-cream);
+        color: var(--text-brown);
+        overflow-x: hidden;
+    }
+
+    .section-container {
+        padding: 100px 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .section-title {
+        font-family: var(--font-headings);
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        color: var(--text-brown);
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    /* ----- 2. Hero Section: Full Screen & Cinematic ----- */
+    .hero-section {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+    .hero-background {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image: url('https://images.unsplash.com/photo-1579887829426-205a8f573f39?auto=format&fit=crop&w=1800&q=80');
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.6);
+    }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+    .hero-title {
+        font-family: var(--font-headings);
+        font-size: clamp(3rem, 8vw, 6rem);
+        text-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+        font-weight: 400;
+        max-width: 500px;
+        margin: 10px auto 40px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .hero-cta {
+        display: inline-block;
+        padding: 18px 45px;
+        background-color: var(--accent-gold);
+        color: var(--text-brown);
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+    }
+    .hero-cta:hover {
+        background-color: #fff;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+    .scroll-indicator {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        color: white;
+        animation: bounce 2.5s infinite;
+    }
+    @keyframes bounce {
+        0%, 100% { transform: translate(-50%, 0); }
+        50% { transform: translate(-50%, -15px); }
+    }
+
+    /* ----- 3. Menu Cards Section: 3D & Interactive ----- */
+    .menu-section {
+        background-color: var(--bg-soft-beige);
+    }
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        perspective: 1000px;
+    }
+    .menu-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px var(--shadow-color);
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+        cursor: pointer; /* لجعل البطاقة تبدو قابلة للنقر */
+    }
+    .menu-card:hover {
+        transform: rotateY(10deg) scale(1.05);
+        box-shadow: 0 20px 40px rgba(74, 55, 49, 0.25);
+    }
+    .card-img-container {
+        height: 250px;
+        overflow: hidden;
+    }
+    .card-img-container img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+    .menu-card:hover .card-img-container img {
+        transform: scale(1.1);
+    }
+    .card-content {
+        padding: 25px;
+    }
+    .card-content h3 {
+        font-family: var(--font-headings);
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    .card-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    /* ----- 4. (الجديد) قسم الخدمات بتصميم خرافي وواضح ----- */
+    .services-section {
+        background-color: var(--bg-soft-beige);
+    }
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+    .service-card {
+        background: #FFFFFF; /* خلفية صلبة وواضحة */
+        padding: 40px 20px;
+        border-radius: 20px;
+        text-align: center;
+        text-decoration: none;
+        color: var(--text-brown);
+        box-shadow: 0 8px 25px rgba(93, 64, 55, 0.08); /* ظل ناعم */
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    .service-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(93, 64, 55, 0.12);
+    }
+    .service-card i { /* تم ترك هذا للتحكم في الحجم والهامش */
+        font-size: 3rem;
+        margin-bottom: 20px;
+        display: inline-block; /* ضروري لعمل التحريك */
+        transition: transform 0.3s ease;
+    }
+    .service-card i::before {
+        background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+    }
+    .service-card:hover i {
+        transform: scale(1.1);
+    }
+    .service-card h3 {
+        font-family: var(--font-headings);
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    .service-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(74, 55, 49, 0.8);
+        margin-top: auto;
+    }
+    
+    /* بطاقة "اطلب الآن" المميزة */
+    .service-card.primary {
+        background: var(--text-brown);
+        color: white;
+    }
+    .service-card.primary:hover {
+        background: var(--accent-red);
+    }
+    .service-card.primary i::before {
+        background: none; /* إلغاء التدرج للبطاقة المميزة */
+        -webkit-text-fill-color: var(--accent-gold);
+        text-fill-color: var(--accent-gold);
+    }
+    .service-card.primary p {
+        color: rgba(251, 246, 239, 0.8);
+    }
+
+    /* ----- 5. About Section ----- */
+    .about-section {
+        background-color: var(--bg-cream);
+    }
+    .two-column-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 60px;
+    }
+    .text-content { text-align: right; }
+    .image-content img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px var(--shadow-color);
+    }
+    /* ----- 5.1 About Section Enhancements ----- */
+    .about-section .text-content .lead-paragraph {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 40px;
+    }
+    .timeline {
+        position: relative;
+        padding-right: 30px;
+        margin-bottom: 40px;
+        border-right: 3px solid var(--accent-gold);
+    }
+    .timeline-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        right: -17px;
+        top: 5px;
+        width: 12px;
+        height: 12px;
+        background-color: var(--accent-red);
+        border: 3px solid var(--bg-cream);
+        border-radius: 50%;
+        z-index: 1;
+    }
+    .timeline-content h4 {
+        font-family: var(--font-headings);
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+        color: var(--text-brown);
+    }
+    .timeline-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    /* ----- 8. (الجديد) كود شاشة المنيو ----- */
+    .menu-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+    }
+
+    .menu-loader.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .loader-content h2 {
+        font-family: var(--font-headings);
+        font-size: clamp(4rem, 10vw, 8rem);
+        color: white;
+        text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        animation: fadeInScale 1s ease forwards;
+    }
+
+
+    
+    /* ----- 7. Responsiveness ----- */
+    @media (max-width: 768px) {
+        .two-column-layout { grid-template-columns: 1fr; }
+        .text-content { text-align: center; order: 2; }
+        .image-content { order: 1; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<header class="hero-section">
+    <div class="hero-background" style="background-image: url('WhatsApp Image 2025-08-16 at 1.30.49 PM.jpeg');"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">مطعم مجابيس</h1>
+        <p class="hero-subtitle">حيث يلتقي التراث بالمذاق العصري. تجربة طعام فريدة تنتظرك.</p>
+        <a href="#services" class="hero-cta">اكتشف خدماتنا</a>
+    </div>
+    <a href="#menu" class="scroll-indicator" style="color:  #8C1D18;"><i class="fa-solid fa-angles-down"></i></a>
+</header>
+
+<main>
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section section-container">
+        <h2 class="section-title">قوائمنا الشهية</h2>
+        <div class="menu-grid">
+            <!-- Card 1: Breakfast Menu -->
+            <div class="menu-card" data-url="https://heyzine.com/flip-book/11249e7f8a.html#page/16">
+                <div class="card-img-container">
+                    <img src="photo_2025-08-16_13-04-38.jpg" alt="صورة فطور شهي">
+                </div>
+                <div class="card-content"><h3>منيو شباتي</h3></div>
+            </div>
+            
+            <!-- Card 2: Lunch Menu -->
+            <div class="menu-card" data-url="https://heyzine.com/flip-book/11249e7f8a.html#page/12">
+                <div class="card-img-container">
+                    <img src="photo_2025-08-16_13-06-10.jpg" alt="صورة غداء فاخر">
+                </div>
+                <div class="card-content"><h3>منيو تاميس</h3></div>
+            </div>
+
+            <!-- Card 3: Dinner Menu -->
+            <div class="menu-card" data-url="https://heyzine.com/flip-book/11249e7f8a.html#page/1">
+                <div class="card-img-container">
+                    <img src="Untitled-1.jpg" alt="صورة عشاء رومانسي">
+                </div>
+                <div class="card-content"><h3>منيو مجابيس</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- (الجديد) قسم الخدمات الفاخر -->
+    <section id="services" class="services-section section-container">
+        <h2 class="section-title">كيف يمكننا خدمتك؟</h2>
+        <div class="services-grid">
+            <!-- Service Card 1: Order Now (Primary) -->
+            <a href="https://www.orderfast.com/en/machaabees" class="service-card primary">
+                <i class="fa-solid fa-motorcycle"></i>
+                <h3>اطلب الآن</h3>
+                <p>وجبتك المفضلة تصلك ساخنة وطازجة إلى باب منزلك بسرعة وسهولة.</p>
+            </a>
+            <!-- Service Card 2: WhatsApp Support (تم التعديل هنا) -->
+            <a href="whatsapp://send?phone=201030063366" class="service-card">
+                <i class="fa-brands fa-whatsapp"></i>
+                <h3>واتساب الدعم</h3>
+                <p>لديك سؤال أو استفسار؟ فريق الدعم جاهز لمساعدتك مباشرة عبر واتساب.</p>
+            </a>
+            <!-- Service Card 3: Your Feedback -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScKGcHBu6B5TMjFoDaUB7A3kA2nQp0gtxrKDjBLxH0d5VqTPA/viewform?usp=sf_link" class="service-card">
+                <i class="fa-solid fa-star"></i>
+                <h3>رأيك يهمنا</h3>
+                <p>شاركنا تجربتك وساعدنا على التطور. نقدر رأيك كثيرًا ونسعى دائمًا للأفضل.</p>
+            </a>
+            <!-- Service Card 4: Our Branches -->
+            <a href="https://viral-xagency.com/EL-tawfik/test.html" class="service-card">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h3>فروعنا</h3>
+                <p>اكتشف مواقع فروعنا الأقرب إليك واستمتع بتجربة طعام لا تُنسى.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section-container">
+        <div class="two-column-layout">
+            <div class="text-content">
+                <h2 class="section-title" style="text-align: right; margin-bottom: 30px;">قصتنا</h2>
+                <p class="lead-paragraph">في عالم تتنوّع فيه المطابخ والنكهات، يظل للمذاق الخليجي سحره الخاص. ومن هنا كانت انطلاقة <strong>مجابيس</strong>، الاسم الذي بات مرادفاً للأصالة والفخامة في عالم المأكولات الكويتية والخليجية.</p>
+
+                <!-- Timeline Section -->
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>2018 - الانطلاقة في الإسكندرية</h4>
+                            <p>بدأت رحلتنا لنكون من أوائل من يقدّم تجربة المائدة الكويتية الأصيلة في مصر.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>2020 - التوسع في الدقي</h4>
+                            <p>وصلنا إلى قلب العاصمة ليتذوق روّادها نكهاتنا الفريدة.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>2022 - فرع الشيخ زايد</h4>
+                            <p>واصلنا انتشارنا حاملين معنا رسالة الطهي الراقي والجودة الفائقة.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p>في مجابيس، نولي كل تفصيلة عناية فائقة، من اختيار أجود المكونات إلى طرق الطهي التقليدية. كل طبق نقدّمه هو حكاية من التراث الخليجي، تعكس دفء الضيافة وفخامتها.</p>
+                
+            </div>
+            <div class="image-content">
+                <img src="photo_2025-08-16_13-21-46.jpg" alt="صورة داخل المطعم">
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- (الجديد) كود شاشة المنيو -->
+<div id="menu-loader-modal" class="menu-loader">
+    <div class="loader-content">
+        <h2>MENU</h2>
+    </div>
+</div>
+
+
+<!-- GSAP Animation Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
+<!-- (تم التعديل هنا) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- Hero Animation ---
+        gsap.from('.hero-content > *', {
+            duration: 1.2,
+            y: 50,
+            stagger: 0.2,
+            delay: 0.5,
+            ease: 'power4.out'
+        });
+
+        // --- Generic Section Animation on Scroll ---
+        const animateOnScroll = (selector, y = 50) => {
+            gsap.from(selector, {
+                scrollTrigger: {
+                    trigger: selector,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                duration: 1,
+                y: y,
+                stagger: 0.2,
+                ease: 'power3.out'
+            });
+        };
+
+        animateOnScroll('.section-title');
+        animateOnScroll('.menu-card');
+        animateOnScroll('.service-card');
+        animateOnScroll('.about-section .text-content > *');
+        animateOnScroll('.about-section .image-content');
+
+        // ---  كود شاشة تحميل المنيو ---
+        const menuCards = document.querySelectorAll('.menu-card');
+        const modal = document.getElementById('menu-loader-modal');
+
+        menuCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const url = card.dataset.url;
+                if (url) {
+                    // 1. إظهار الشاشة
+                    modal.classList.add('visible');
+
+                    // 2. الانتظار لمدة 1.5 ثانية ثم الانتقال للرابط
+                    setTimeout(() => {
+                        // هذا السطر يفتح الرابط في نفس الصفحة
+                        window.location.href = url;
+                    }, 1500); // 1500ms = 1.5 seconds
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
