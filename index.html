@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>مجابيس</title>
+    <title>مجابيس</title>
+
     <!-- Google Fonts: Elegant Arabic & English -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- الخطوط القديمة والجديدة -->
     <link href="https://fonts.googleapis.com/css2?family=Marhey:wght@700&family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome (for icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -21,7 +24,8 @@
         --accent-gold: #D4AF37;
         --accent-red: #B95C50;
         --shadow-color: rgba(74, 55, 49, 0.15);
-        --font-headings: 'Marhey', 'Cairo', sans-serif;
+        /* === تم التعديل هنا === */
+        --font-headings: 'Aref Ruqaa', 'Cairo', sans-serif;
         --font-body: 'Cairo', sans-serif;
     }
 
@@ -320,8 +324,14 @@
         animation: fadeInScale 1s ease forwards;
     }
 
+    .hero-title .highlight {
+    color: rgb(255, 0, 0); /* استخدام اللون الأحمر من تصميمك */
+}
+/* ظل لكلمه مجابيس */
+.hero-title .highlight {
+    text-shadow: 0 0 35px rgb(0, 0, 0);
+}
 
-    
     /* ----- 7. Responsiveness ----- */
     @media (max-width: 768px) {
         .two-column-layout { grid-template-columns: 1fr; }
@@ -336,11 +346,11 @@
 <header class="hero-section">
     <div class="hero-background" style="background-image: url('WhatsApp Image 2025-08-16 at 1.30.49 PM.jpeg');"></div>
     <div class="hero-content">
-        <h1 class="hero-title">مطعم مجابيس</h1>
+       <h1 class="hero-title">مطعم <span class="highlight">مجابيس</span></h1>
         <p class="hero-subtitle">حيث يلتقي التراث بالمذاق العصري. تجربة طعام فريدة تنتظرك.</p>
         <a href="#services" class="hero-cta">اكتشف خدماتنا</a>
     </div>
-    <a href="#menu" class="scroll-indicator" style="color:  #8C1D18;"><i class="fa-solid fa-angles-down"></i></a>
+    <a href="#menu" class="scroll-indicator" style="color:  #ff0f02;"><i class="fa-solid fa-angles-down"></i></a>
 </header>
 
 <main>
@@ -397,7 +407,7 @@
                 <p>شاركنا تجربتك وساعدنا على التطور. نقدر رأيك كثيرًا ونسعى دائمًا للأفضل.</p>
             </a>
             <!-- Service Card 4: Our Branches -->
-            <a href="https://viral-xagency.com/EL-tawfik/test.html" class="service-card">
+            <a href="https://ahmadshehata-svg.github.io/Our_Branches/" class="service-card">
                 <i class="fa-solid fa-map-location-dot"></i>
                 <h3>فروعنا</h3>
                 <p>اكتشف مواقع فروعنا الأقرب إليك واستمتع بتجربة طعام لا تُنسى.</p>
@@ -409,7 +419,7 @@
     <section id="about" class="about-section section-container">
         <div class="two-column-layout">
             <div class="text-content">
-                <h2 class="section-title" style="text-align: right; margin-bottom: 30px;">قصتنا</h2>
+                <h2 class="section-title" style="text-align: right; margin-bottom: 40px;">قصتنا</h2>
                 <p class="lead-paragraph">في عالم تتنوّع فيه المطابخ والنكهات، يظل للمذاق الخليجي سحره الخاص. ومن هنا كانت انطلاقة <strong>مجابيس</strong>، الاسم الذي بات مرادفاً للأصالة والفخامة في عالم المأكولات الكويتية والخليجية.</p>
 
                 <!-- Timeline Section -->
@@ -464,6 +474,7 @@
         // --- Hero Animation ---
         gsap.from('.hero-content > *', {
             duration: 1.2,
+          
             y: 50,
             stagger: 0.2,
             delay: 0.5,
@@ -479,6 +490,7 @@
                     toggleActions: 'play none none reverse'
                 },
                 duration: 1,
+           
                 y: y,
                 stagger: 0.2,
                 ease: 'power3.out'
